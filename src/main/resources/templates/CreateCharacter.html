@@ -6,6 +6,19 @@
 <link rel="stylesheet" href="RPGApp.css">
 </head>
 <body>
-<div>キャラクター作成</div>
+	<div>キャラクター作成</div>
+	<form method="post" action="/dicideCharacter">
+		<p>
+			職業<br> <input type="radio" name="job" value="戦士"> 戦士
+			<input type="radio" name="job" value="魔法使い"> 魔法使い
+		</p>
+		<p>
+			名前：<br> <input type="text" name="nameForm">
+		</p>
+		<p>
+			<input type="submit" value="次へ">
+		</p>
+
+	</form>
 </body>
 </html>

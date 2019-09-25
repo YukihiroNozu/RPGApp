@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import jp.co.systena.tigerscave.rpgapp.form.CharacterParameter;
+import jp.co.systena.tigerscave.rpgapp.form.WarriorClass;
+import jp.co.systena.tigerscave.rpgapp.form.WizardClass;
 
 @Controller // Viewあり。Viewを返却するアノテーション
 public class RPGAppController {
@@ -19,7 +21,7 @@ public class RPGAppController {
   HttpSession session; // セッション管理
 
   @RequestMapping("/CreateCharacter") // URLとのマッピング
-  public String createCharacter(){
+  public String createCharacter() {
 
     // Viewのテンプレート名を返す
     return "CreateCharacter";
@@ -31,33 +33,43 @@ public class RPGAppController {
 
     session.setAttribute("CharacterParameter", characterParameter);
 
-//      CharacterParameterService service = new CharacterParameterService();
-//      List<CharacterParameter> human = service.getCharacterParameter();
-//      mav.addObject("CharacterParameter", characterParameter);
-
-      return new ModelAndView("redirect:/dicideCharacter"); // リダイレクト
+    return new ModelAndView("redirect:/dicideCharacter"); // リダイレクト
   }
 
   @RequestMapping(value = "/dicideCharacter", method = RequestMethod.GET) // URLとのマッピング
-  public ModelAndView dicideCharacter(ModelAndView mav){
+  public ModelAndView dicideCharacter(ModelAndView mav) {
 
     CharacterParameter human = (CharacterParameter) session.getAttribute("CharacterParameter");
 
-//    if(human.getJob() == "戦士") {
-//
-//      WarriorClass warrior = (WarriorClass) session.getAttribute("CharacterParameter");
-//
-//      mav.addObject("CharacterParameter", warrior);
-//
-//    }else if(human.getJob() == "魔法使い"){
-//
-//      WizardClass wizard = (WizardClass) session.getAttribute("CharacterParameter");
-//
-//      mav.addObject("CharacterParameter", wizard);
-//
-//    }
+    if (human.getJob().equals("戦士")) {
 
-    mav.addObject("CharacterParameter", human);
+      CharacterParameter warrior = new WarriorClass();
+
+      warrior = human;
+
+//      WarriorClass.attack();
+      warrior.message = "は剣で攻撃した！";
+
+
+      mav.addObject("CharacterParameter", warrior);
+
+    } else if (human.getJob().equals("魔法使い")) {
+
+      CharacterParameter wizard = new WizardClass();
+
+      wizard = human;
+
+      wizard.message = "は魔法で攻撃した！";
+
+      mav.addObject("CharacterParameter", wizard);
+
+    }else {
+
+      human.setMessage("は石を投げて攻撃した。");
+
+      mav.addObject("CharacterParameter", human);
+
+    }
 
     // Viewのテンプレート名を返す
 
@@ -70,17 +82,17 @@ public class RPGAppController {
   public ModelAndView index2(ModelAndView mav, @Valid CharacterParameter characterParameter,
       BindingResult bindingResult, HttpServletRequest request) {
 
-    session.setAttribute("CharacterParameter", characterParameter);
+//    session.setAttribute("CharacterParameter", characterParameter);
 
-//      CharacterParameterService service = new CharacterParameterService();
-//      List<CharacterParameter> human = service.getCharacterParameter();
-//      mav.addObject("CharacterParameter", characterParameter);
+    // CharacterParameterService service = new CharacterParameterService();
+    // List<CharacterParameter> human = service.getCharacterParameter();
+    // mav.addObject("CharacterParameter", characterParameter);
 
-      return new ModelAndView("redirect:/attack"); // リダイレクト
+    return new ModelAndView("redirect:/attack"); // リダイレクト
   }
 
   @RequestMapping(value = "/attack", method = RequestMethod.GET) // URLとのマッピング
-  public ModelAndView result(ModelAndView mav){
+  public ModelAndView result(ModelAndView mav) {
 
     CharacterParameter human = (CharacterParameter) session.getAttribute("CharacterParameter");
 

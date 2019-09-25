@@ -9,8 +9,9 @@
 	<div>キャラクター作成</div>
 	<form method="POST" action="/session" th:object="${CharacterParameter}">
 		<p>
-			職業<br> <input type="radio" name="job" value="戦士"> 戦士
-			<input type="radio" name="job" value="魔法使い"> 魔法使い
+			職業<br> <input type="radio" name="job" value="戦士"> 戦士 <input
+				type="radio" name="job" value="魔法使い"> 魔法使い <input
+				type="radio" name="job" value="一般人"> 一般人
 		</p>
 		<p>
 			名前：<br> <input type="text" name="name">

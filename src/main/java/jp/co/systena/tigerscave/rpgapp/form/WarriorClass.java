@@ -2,8 +2,11 @@ package jp.co.systena.tigerscave.rpgapp.form;
 
 public class WarriorClass extends CharacterParameter{
 
+  @Override
   public void attack() {
-    String message = "は剣で攻撃した！";
+
+    this.message = "は剣で攻撃した！";
+
   }
 
 }

@@ -13,8 +13,8 @@ public class CharacterParameterService {
 
     CharacterParameter CharacterParameter = new CharacterParameter();
 
-    CharacterParameter.setName("よしひこ");
-    CharacterParameter.setJob("戦士");
+    CharacterParameter.setName("");
+    CharacterParameter.setJob("");
     CharacterParameter.setHp(100);
     human.add(CharacterParameter);
 

@@ -7,13 +7,16 @@
 </head>
 <body>
 	<div>コマンド選択</div>
-	<p>職業：
-	<output th:text="${CharacterParameter.getJob()}"></output>
+	<p>
+		職業：
+		<output th:text="${CharacterParameter.getJob()}"></output>
 	</p>
-	<p>名前：
-	<output th:text="${CharacterParameter.getName()}"></output>
+	<p>
+		名前：
+		<output th:text="${CharacterParameter.getName()}"></output>
 	</p>
-	<form method="POST" action="/session2" th:object="${CharacterParameter}">
+	<form method="POST" action="/session2"
+		th:object="${CharacterParameter}">
 		<p>
 			<input type="submit" value="戦う">
 		</p>

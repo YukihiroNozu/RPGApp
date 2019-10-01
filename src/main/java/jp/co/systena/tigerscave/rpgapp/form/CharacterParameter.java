@@ -1,5 +1,4 @@
 package jp.co.systena.tigerscave.rpgapp.form;
-
 public class CharacterParameter{
 
   /*
@@ -13,7 +12,7 @@ public class CharacterParameter{
   /*
    * HP
    */
-  private int hp;
+  private int hp = 100;
   /*
    * メッセージ
    */

@@ -45,11 +45,13 @@ public class RPGAppController {
 
       CharacterParameter warrior = new WarriorClass();
 
-      warrior = human;
+      warrior.attack();
 
-//      WarriorClass.attack();
-      warrior.message = "は剣で攻撃した！";
+      String attackMessage = warrior.getMessage();
 
+      warrior = (CharacterParameter) session.getAttribute("CharacterParameter");
+
+      warrior.message = attackMessage;
 
       mav.addObject("CharacterParameter", warrior);
 
@@ -57,9 +59,13 @@ public class RPGAppController {
 
       CharacterParameter wizard = new WizardClass();
 
+      wizard.attack();
+
+      String attackMessage = wizard.getMessage();
+
       wizard = human;
 
-      wizard.message = "は魔法で攻撃した！";
+      wizard.message = attackMessage;
 
       mav.addObject("CharacterParameter", wizard);
 
